@@ -11,10 +11,9 @@ function App() {
       `https://reqres.in/api/users?page=${pageNumber}`)
       .then((res) => res.json())
       .then((json) => {
-        console.log(json.data)
         setUsers(json.data);
       })
-  }, [])
+  });
 
 
   const changePage = ({ selected }) => {
@@ -34,7 +33,7 @@ function App() {
       {users
     .map((user) => {
       return (
-        <div className="card-container">
+        <div className="card-container" key={user.id}>
 			<header>
 				<img src={user.avatar} alt={user.first_name} />
 			</header>
